@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:news_app/Caroussels_News.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -15,9 +16,10 @@ class _LandingPageState extends State<LandingPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Latest news"),
-        titleTextStyle: const TextStyle(
-          
-        ),
+        titleTextStyle: const TextStyle(),
+      ),
+      body: const SafeArea(
+        child: CarouselPage(),
       ),
       bottomNavigationBar: BottomAppBar(
         child: Row(
