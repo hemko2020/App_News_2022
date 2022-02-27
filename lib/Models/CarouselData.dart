@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final carouselData = carouselDataFromJson(jsonString);
-
 // ignore_for_file: prefer_if_null_operators, unnecessary_null_comparison
 
 import 'dart:convert';
@@ -40,17 +36,14 @@ class Article {
   Article({
     required this.title,
     required this.urlToImage,
-  
   });
 
   String title;
   String urlToImage;
- 
 
   factory Article.fromJson(Map<String, dynamic> json) => Article(
         title: json["title"],
         urlToImage: json["urlToImage"],
-       
       );
 
   Map<String, dynamic> toJson() => {

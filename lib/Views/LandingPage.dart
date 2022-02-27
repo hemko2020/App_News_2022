@@ -1,7 +1,6 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-import 'package:news_app/Caroussels_News.dart';
+import 'package:news_app/Views/Caroussels_News.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -11,46 +10,57 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
+  late int index = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.black,
         title: const Text("Latest news"),
-        titleTextStyle: const TextStyle(),
+        titleTextStyle:
+            const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
       ),
       body: const SafeArea(
         child: CarouselPage(),
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            IconButton(
-              highlightColor: Colors.deepOrange.shade100,
-              splashRadius: 20,
-              onPressed: () {},
-              icon: const Icon(Icons.home),
-            ),
-            IconButton(
-              highlightColor: Colors.deepOrange.shade100,
-              splashRadius: 20,
-              onPressed: () {},
-              icon: const Icon(Icons.search),
-            ),
-            IconButton(
-              highlightColor: Colors.deepOrange.shade100,
-              splashRadius: 20,
-              onPressed: () {},
-              icon: const Icon(Icons.favorite),
-            ),
-            IconButton(
-              highlightColor: Colors.deepOrange.shade100,
-              splashRadius: 20,
-              onPressed: () {},
-              icon: const Icon(Icons.settings),
-            ),
-          ],
+      bottomNavigationBar: NavigationBarTheme(
+        data: NavigationBarThemeData(
+          indicatorColor: Colors.deepOrange.shade200,
+          labelTextStyle: MaterialStateProperty.all(
+            const TextStyle(
+                fontSize: 14, fontWeight: FontWeight.w500, color: Colors.white),
+          ),
         ),
+        child: NavigationBar(
+            height: 60,
+            backgroundColor: Colors.black,
+            selectedIndex: index,
+            onDestinationSelected: (index) =>
+                setState(() => this.index = index),
+            destinations: [
+              const NavigationDestination(
+                icon: Icon(
+                  Icons.dashboard_customize,
+                  color: Colors.white,
+                ),
+                label: "Home",
+              ),
+              const NavigationDestination(
+                icon: Icon(
+                  Icons.search,
+                  color: Colors.white,
+                ),
+                label: "Search",
+              ),
+              const NavigationDestination(
+                icon: Icon(
+                  Icons.favorite_border,
+                  color: Colors.white,
+                ),
+                label: "Favorite",
+              ),
+            ]),
       ),
     );
   }
