@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 import 'package:flutter/material.dart';
-import 'package:news_app/Views/Caroussels_News.dart';
+import 'package:news_app/Views/FavoriesPage.dart';
+import 'package:news_app/Views/HomePage.dart';
+import 'package:news_app/Views/SearchPage.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -11,6 +13,17 @@ class LandingPage extends StatefulWidget {
 
 class _LandingPageState extends State<LandingPage> {
   late int index = 0;
+  final screen = [
+    Center(
+      child: HomePage(),
+    ),
+    Center(
+      child: SearchPage(),
+    ),
+    Center(
+      child: FavoritePage(),
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +34,7 @@ class _LandingPageState extends State<LandingPage> {
         titleTextStyle:
             const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
       ),
-      body: const SafeArea(
-        child: CarouselPage(),
-      ),
+      body: screen[index],
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(
           indicatorColor: Colors.deepOrange.shade200,
