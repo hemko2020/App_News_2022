@@ -63,8 +63,8 @@ class _LandingPageState extends State<LandingPage> {
               boxShadow: [
                 BoxShadow(
                     color: Colors.deepOrange.shade200,
-                    spreadRadius: 0,
-                    blurRadius: 10)
+                    spreadRadius: 3,
+                    blurRadius: 8)
               ],
             ),
             child: ClipRRect(
@@ -72,7 +72,7 @@ class _LandingPageState extends State<LandingPage> {
                   topRight: Radius.circular(5), topLeft: Radius.circular(5)),
               child: BottomNavigationBar(
                 backgroundColor: Colors.black,
-                iconSize: 20,
+                iconSize: 25,
                 unselectedItemColor: Colors.white,
                 unselectedFontSize: 9.5,
                 selectedFontSize: 9.5,
